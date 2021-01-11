@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <title>ex-dischi-musicali</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="app">
+            <header>
+                <div class="container _flex">
+                    <img src="logo.png" alt="logo" />
+                    <!-- select -->
+                    <select
+                        @change="filterByGenre(optionValue)"
+                        v-model="optionValue"
+                    >
+                        <option value="All">All</option>
+                        <option v-for="genre in genres" :value="genre">
+                            {{ genre }}
+                        </option>
+                    </select>
+                </div>
+            </header>
+
+            <div class="cds-container container">
+                <!-- Disco ad esempio -->
+                <div class="cd" v-for="disc in discs">
+                    <img :src="disc.poster" alt="" />
+                    <h3>{{ disc.title }}</h3>
+                    <span class="author">{{ disc.author }}</span>
+                    <span class="year">{{ disc.year }}</span>
+                </div>
+            </div>
+        </div>
+
+        <script src="main.js" charset="utf-8"></script>
+    </body>
+</html>
